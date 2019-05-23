@@ -246,8 +246,5 @@ int receive(void (*onReceive)(message_t *)){
         return EXIT_FAILURE;
     }
 
-
-
-
     return EXIT_SUCCESS;
 }

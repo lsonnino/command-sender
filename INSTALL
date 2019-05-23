@@ -28,7 +28,7 @@ echo " > Installing ... "
 done=false
 mkdir $CONFIG_PATH && chmod 777 $CONFIG_PATH && cp src/$DATABASE_NAME $CONFIG_PATH/$DATABASE_NAME && done=true
 $done && chmod 777 $CONFIG_PATH/$DATABASE_NAME
-$done && cp -n out/* $INSTALL_PATH
+$done && cp -n out/* $INSTALL_PATH/
 if [[ $done == true ]]; then
     echo " > Installation completed"
 else
