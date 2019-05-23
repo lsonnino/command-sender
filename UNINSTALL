@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source path.sh
+
+echo -n " > Uninstalling ... "
+sudo rm -R $INSTALL_PATH
+sudo rm -R $CONFIG_PATH
+echo "done"

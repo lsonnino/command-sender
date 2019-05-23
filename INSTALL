@@ -1,0 +1,39 @@
+#!/bin/bash
+
+source path.sh
+
+done=false
+
+echo -n " > Checking dependenncies ... "
+type sqlite3 > /dev/null 2>&1 && done=true
+if [[ $done == true ]]; then
+    echo "ok"
+else
+    echo "failed"
+    echo "sqlite 3 not installed"
+    exit
+fi
+
+echo " > Compiling ... "
+done=false
+make && done=true
+if [[ $done == true ]]; then
+    echo " > Compilation done"
+else
+    echo " > Compilation failed"
+    exit
+fi
+
+echo " > Installing ... "
+done=false
+mkdir $CONFIG_PATH && chmod 777 $CONFIG_PATH && cp src/$DATABASE_NAME $CONFIG_PATH/$DATABASE_NAME && done=true
+$done && chmod 777 $CONFIG_PATH/$DATABASE_NAME
+$done && cp out/* $INSTALL_PATH
+if [[ $done == true ]]; then
+    echo " > Installation completed"
+else
+    echo " > Installation failed"
+    exit
+fi
+
+make clean
